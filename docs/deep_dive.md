@@ -1,8 +1,8 @@
-# Table of Contents (deep-dive)
+# Table of Contents (MNSG-RECOMP-RESEARCH)
 
-## What this file is trying to do (one sentence)
+## What this file is trying to do 
 
-This page explains how the pushbackrecoil/overlay/debugger mod works end-to-end, and links to the “source of truth” reference tables for addresses, $a1 action codes, ctx+0x4C behavior, and stage/data plumbing.
+This page explains how the overlay/debugger/pushback mod works end-to-end, and links to the “source of truth” reference tables for addresses, $a1 action codes, ctx+0x4C behavior, and stage/data plumbing.
 
 ## Key addresses & engine entrypoints
 
