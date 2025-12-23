@@ -20,6 +20,7 @@ nav:
       - Call graph: call_graph.md
       - Discoveries: discoveries.md
       - Slides: slides.md
+      - site_url: https://sirdankz.github.io/goemon-recomp-research/
 
   - Hooks:
       - DD830: hooks/dd830.md
