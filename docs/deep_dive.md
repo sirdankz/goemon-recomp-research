@@ -2,6 +2,28 @@
 
 ## What this file is trying to do (one sentence)
 
+
+### Updated facts & cross-links (always current)
+
+If you only read one page: **Reference → Master summarized**  
+- [Master summarized](../reference/master_summarized/)
+
+Quick links to the tables that change most often:
+- [$a1 action codes (character/action mapping)](../reference/action_codes/)
+- [ctx+0x4C map + gotchas](../reference/ctx_4c_map/)
+- [Stage plumbing (pointer tables + metadata offsets)](../reference/stage_plumbing/)
+
+Key confirmed addresses (quick view):
+- Inputs: `0x800C7D3A` (u16 held bitfield) → **A=0x8000, B=0x4000, L=0x0020**
+- Weapon slot: `0x8015C604` (u32) → 1/2/3
+- HP (half-hearts): `0x8015C5E7` (u8)
+
+Hooks used by this mod:
+- `func_801DD830_599740` (ENTRY) — DD830 classifier / trigger arming
+- `func_801E3B9C_59FAAC` (ENTRY + RETURN) — ctl discovery + recoil apply at RETURN
+- `func_801D98E0_5957F0` (RETURN) — per-frame overlay + timers
+
+
 ## Key addresses & engine entrypoints
 
 ## Global state variables (what each on-screen field really is)
