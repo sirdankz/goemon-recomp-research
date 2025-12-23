@@ -7,8 +7,7 @@
 [Master Summarized](docs/Master%20Summarized.md)
 - **Deep dive:** 
 [deep_dive.md](docs/deep_dive.md)
-- **Wiki pages:** 
-[wiki/](wiki/)
+
 
 - **Join the Ganbare Goemon Discord:** 
 https://discord.gg/AaG5eWX4
