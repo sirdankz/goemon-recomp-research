@@ -2,7 +2,7 @@
 
 ## Quick links
 - **.c file:** 
-[template_debug.c](template_debug.c)
+[template_debug.c](template_debug.c) **~mod debugger used**
 - **Summarized:** 
 [Master Summarized](docs/Master%20Summarized.md)
 - **Deep dive:** 
