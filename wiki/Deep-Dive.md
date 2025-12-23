@@ -1,7 +1,8 @@
 # Table of Contents (deep-dive)
 
 ## What this file is trying to do (one sentence)
-
+template_debug.c
+https://github.com/sirdankz/goemon-recomp-research/blob/main/template_debug.c
 ## Key addresses & engine entrypoints
 
 ## Global state variables (what each on-screen field really is)
