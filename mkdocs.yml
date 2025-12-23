@@ -19,6 +19,8 @@ nav:
       - Helpers: helpers.md
       - Call graph: call_graph.md
       - Discoveries: discoveries.md
+      - Slides: slides.md
+
   - Hooks:
       - DD830: hooks/dd830.md
       - E3B9C: hooks/e3b9c.md
