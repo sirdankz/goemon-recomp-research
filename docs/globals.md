@@ -1,43 +1,37 @@
-# Globals
+## Global state variables (what each on-screen field really is)
 
-This page maps your **on-screen overlay labels** to what they actually are.
+> This page maps the on-screen overlay fields to what they represent in memory / logic.
 
-> If a field is listed as “observed”, it means it came from your runtime notes/logs (not a guessed decomp name).
+### Counters / last-seen snapshots
+- `DD830` → counts entries into `func_801DD830_599740`
+- `E3B9C` → counts entries/returns for `func_801E3B9C_59FAAC`
+- `wpn.` → last read of `0x8015C604` (weapon slot 1–3)
+- `buttons` → last read of `0x800C7D3A` (held input bitfield)
+- `a1_prev / a1` → `$a1` transition tracking captured in DD830
+- `ctx` → `$a0` captured in DD830 (treated as context pointer)
+- `4C` → `rd8(ctx + 0x4C)` (if ctx looks valid)
 
----
+### Fire coin / recoil pipeline (observed + matches the current debug overlay mod)
+- `BHold` → counts up while **weapon slot 3** is active and **B is held**
+- `ready.` → becomes `1` after ~3 seconds of holding B (charge threshold)
+- `fire.` → becomes `1` on the actual “throw” moment (your detector uses an a1 transition)
+- `recoil` → becomes nonzero after `fire.=1`, then counts down when `func_801E3B9C_59FAAC` runs (because recoil is decremented when the write is applied)
 
-## Counters / snapshots
+### What “B” means on the overlay
+- `B = 1` whenever **B is pressed or held** (derived from the held bitfield’s `BTN_B` flag)
 
-- `DD830` — call counter for `func_801DD830_599740` (counts up during attacking/jumping/character swap)
-- `E3B9C` — call counter for `func_801E3B9C_59FAAC` (counts up on sudden-stop + wpn1/2 attack paths)
-- `wpn.` — last read of `0x8015C604` (weapon slot 1–3; includes camera/flute slots depending on character)
-- `a1` — last `$a1` observed inside `func_801DD830_599740`
-- `a1_prev` — previous `$a1` (for transition detection)
-- `ctx` — last `$a0` observed inside `func_801DD830_599740` (your “context pointer”)
-- `4C` — last byte read from `ctx + 0x4C` (used as a “mode discriminator”)
-- `buttons` — last read of `0x800C7D3A` (held bitfield)
-
----
-
-## Fire coin / recoil state machine (overlay fields)
-
-These are the fields you used to track “B-hold → ready → fire → recoil”.
-
-- `BHold` — counts **up** while **B is held** and weapon slot is `3`  
-  - Observed: “only while Goemon’s wpn3 is out”, but the code path is generally `wpn==3`.
-- `B` — 1 whenever **B is pressed or held** (derived from the held-bitfield snapshot)
-- `ready.` — becomes 1 after holding B long enough to charge (you observed ~3 seconds)
-- `fire.` — 1 on the exact trigger moment after `ready.` when the throw condition happens (ex: airborne throw moment)
-- `recoil` — becomes nonzero after `fire.=1`, then counts down when `func_801E3B9C_59FAAC` gets called (RETURN hook applies pushback)
+### “ctl” pointers / scalars shown in the overlay
+- `ctl` → dereferenced from `ctx + 0x5C`
+- `pre4 / post4` → value at `ctl + 0x04` before/after our write (pushback scalar)
+- `ap` → “applied” flag (did we actually write in the return hook this frame?)
 
 ---
 
-## Important “gate” discriminator (ctx + 0x4C)
+## What we *do not* claim as confirmed yet
+Some labels you’ve used in earlier overlays (examples: `k`, `mv`, `t`, `atk`, “A/B offsets”) clearly behave like timers/counters,
+but we **haven’t pinned them to exact struct offsets** with a reliable writer/reader chain yet.
+When we do, they should move from “notes” into `addresses.md` / `hooks/*`.
 
-Your original “stability filter” was:
+---
 
-- `REQUIRED_CTX_PTR = 0x8016A090`
-- `REQUIRED_CTX_4C  = 0x14`
-- “Gate passes only if `(ctx == REQUIRED_CTX_PTR && rd8(ctx+0x4C) == 0x14)`”
-
-This is **useful** for preventing bad pointer reads, but it has real gotchas (see: **Reference → ctx+0x4C map** and **Reference → Gotchas**).
+See also: [Master summarized](master_summarized.md)

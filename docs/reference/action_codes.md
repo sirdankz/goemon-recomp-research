@@ -1,66 +1,44 @@
-# Action codes (`$a1`) map (DD830)
+# $a1 action code mapping (from func_801DD830_599740)
 
-This page consolidates every `$a1` observation you’ve logged **in one place**, including character-specific exceptions.
+This is your most valuable “what is the player doing right now?” classifier.
 
-> Source of truth: your runtime overlay + notes while hooking `func_801DD830_599740` (“DD830”).
+> **Status:** Confirmed by your live observations/logging. (We’ll promote to “code-confirmed” once we tie it to decomp/asm writes.)
 
----
+## Common values (all characters)
 
-## The “base” mappings you confirmed (most consistent)
+- **`a1 = 3`** — default during **character change spawn smoke** (any character)
+- **`a1 = 1`** — **jumping** (any character)
 
-- `a1 = 0x00000003` — default during **character swap / spawn smoke**
-- `a1 = 0x00000001` — **jump** (any character)
-- `a1 = 0x00000004` — **weapon 1 / weapon 2 attack** for:
-  - Goemon
-  - Sasuke
-  - Ebisumaru
-  - Yae (wpn1)
-- `a1 = 0x00000006` — **weapon 3 attack** (Goemon + Sasuke)
+## Attacks / tools (weapon-slot dependent)
 
----
+### Weapon slot 1 / 2 attacks
+- **`a1 = 4`** — **Goemon / Sasuke / Ebisumaru** weapon 1 **or** weapon 2 attack (observed)
+- **`a1 = 4`** — **Yae** weapon 1 attack (observed)
 
-## Character / weapon exceptions you explicitly noted
+### Weapon slot 3 attacks (Goemon/Sasuke)
+- **`a1 = 6`** — **Goemon / Sasuke** weapon 3 attack (observed)
 
-### Ebisumaru
-- Camera use: **no change** (doesn’t flip to the typical attack codes)
+### Tools (camera / flute)
+- **No change observed** — **Ebisumaru camera** (tool)
+- **No change observed** — **Yae flute** (tool)
 
-### Yae
-- `a1 = 0x00000004` — Yae wpn1 attack
-- Flute use: **no change**
+## Goemon combo detail (observed)
 
-### Goemon combo notes (important)
-You observed combo-specific deviations:
-- `a1 = 0x00000000` — Goemon **2nd attack** during combo (session observation)
-- `a1 = 0x00000006` — Goemon **3rd attack** during combo (session observation)
+- **`a1 = 0`** — Goemon 2nd attack during combo
+- **`a1 = 6`** — Goemon 3rd attack during combo
 
----
+## Extra older-session combo values (keep, but treat as “maybe different tap”)
 
-## Other `$a1` sequences you saw in a different session (keep, don’t lose)
+From an earlier session you logged:
+- weapon 1 solo: `a1 = 5`
+- combo stop at 2nd: `a1 = 6`
+- combo finish / 3rd: `a1 = 7`
+- weapon 1 jump attack (“short”): `a1 = 8`
 
-In another run you reported a different set while tracking weapon-1 sequences:
+### Gotcha: “no change” isn’t “no event”
+If camera/flute doesn’t produce a new `a1`, it might be:
+1) not traversing DD830, OR
+2) DD830 runs but `a1` remains constant, OR
+3) that action is classified elsewhere.
 
-- wpn1 (no combo): `a1 = 0x00000005`
-- stop combo on 2nd hit: `a1 = 0x00000006`
-- finish combo + do 3rd: `a1 = 0x00000007`
-- jump-attack (weapon 1 short attack): `a1 = 0x00000008`
-
-**Status:** not yet reconciled with the newer “0/4/6” combo notes.  
-This could be:
-- a different callsite / different phase of the state machine,
-- a different hook point / build,
-- or an overlay update where the meaning of “a1” changed.
-
-We keep both until you re-test them in one clean session.
-
----
-
-## Why this matters (practical modding)
-
-If you want “do X only on *this* action”, `$a1` is the best high-level discriminator you currently have — but it’s **not globally unique** across all phases.
-
-- Best practice: use `$a1` **plus** one of:
-  - `weapon_slot` (`0x8015C604`)
-  - `ctx+0x4C` (mode discriminator)
-  - a short timing window (like your `pending` window)
-
-So your trigger conditions stay stable across characters and transitions.
+**Don’t rely on `a1` alone** to detect camera/flute.

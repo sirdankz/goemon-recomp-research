@@ -1,44 +1,30 @@
-site_name: Goemon Mod Notes
-site_url: https://sirdankz.github.io/goemon-recomp-research/
-repo_url: https://github.com/sirdankz/goemon-recomp-research
-repo_name: sirdankz/goemon-recomp-research
-
+site_name: Goemon Recomp Research
 theme:
   name: material
   features:
     - navigation.tabs
     - navigation.sections
-    - navigation.top
-    - content.code.copy
+    - navigation.indexes
+    - toc.integrate
     - search.suggest
     - search.highlight
-
-markdown_extensions:
-  - toc:
-      permalink: true
-  - admonition
-  - pymdownx.details
-  - pymdownx.superfences
-
+plugins:
+  - search
 nav:
   - Home: index.md
   - Deep dive: deep_dive.md
   - Reference:
+      - Master summarized: master_summarized.md
       - Addresses: addresses.md
       - Globals: globals.md
+      - Reference index: reference/index.md
+      - $a1 action codes: reference/action_codes.md
+      - ctx+0x4C map: reference/ctx_4c_map.md
+      - Stage plumbing: reference/stage_plumbing.md
       - Helpers: helpers.md
       - Call graph: call_graph.md
       - Discoveries: discoveries.md
-      - Slides: slides.md
-      - Action codes (a1): reference/action_codes.md
-      - ctx+0x4C map: reference/ctx_4c_map.md
-      - Gotchas: reference/gotchas.md
-      - Stage plumbing: reference/stage_plumbing.md
-      - site_url: site_url.md
   - Hooks:
       - DD830: hooks/dd830.md
       - E3B9C: hooks/e3b9c.md
       - D98E0: hooks/d98e0.md
-
-plugins:
-  - search

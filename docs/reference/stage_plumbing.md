@@ -1,57 +1,27 @@
-# Stage/data plumbing (confirmed)
+# Stage / data plumbing (confirmed RE findings)
 
-This is your “stage actor metadata + stage pointer table” lane — separate from combat hooks, but extremely useful for:
-- stage-specific mods
-- actor swaps
-- loading extra data assets
-- understanding why certain room transitions reset your state
+These are the “stage content loader” facts we’ve confirmed so far.
 
----
-
-## Confirmed pointer table: `D_80231300_5EC7D0`
-
+## 1) Stage pointer table
 - `D_80231300_5EC7D0` is indexed with `(stage_id * 4)` to load a pointer entry.
-- That entry points to stage-specific data.
+- This behaves like a stage-level pointer table.
 
-**Practical use:**  
-If you can identify the stage_id source, you can build “if stage_id == X then patch Y” logic without relying on fragile room names.
+## 2) StageActorMetadata layout (partial)
+Access patterns observed:
+- `u16` at `+0x14`
+- function pointer at `+0x18` (invoked via `jalr`)
 
----
+Interpretation: a stage actor metadata struct carries both IDs and a per-actor function callback.
 
-## Confirmed StageActorMetadata layout
+## 3) Loader loop
+`func_80013AC4_146C4`:
+- iterates a `u16` list of IDs terminated by `0`
+- calls a loader for each entry
 
-When the engine resolves an “actor metadata” entry, you confirmed these offsets:
+This is a classic “load resources / actors by ID list” pattern.
 
-- `+0x14` — `u16` field (ID/type-like)
-- `+0x18` — function pointer (called via `jalr`)
-
-**Practical use:**  
-This is a clean “actor init/behavior trampoline.” If you ever want to intercept actor spawns without hooking a giant global update loop, this is a strong target.
-
----
-
-## Confirmed loader iterator: `func_80013AC4_146C4`
-
-- Iterates a `u16` list terminated by `0`
-- Calls a loader for each entry
-
-**Practical use:**
-- “Inject one more resource ID into the list” is a common mod trick (careful with memory/limits).
-
----
-
-## Confirmed global/init-ish function: `func_801F71D0_5B30E0`
-
-- Touches globals
-- Calls `osViSetSpecialFeatures`
-- Not stage-specific
-
-**Practical use:**  
-Good place for “once per boot” debug toggles, global settings, feature flags — not stage logic.
-
----
-
-## Gotchas
-
-- This plumbing is stage/actor oriented. If your issue is “movement lock during attacks”, you’re still in the DD830/E3B9C lane.
-- BUT: it explains why door transitions and warps change behavior (objects rebuilt, pointers replaced, lists reloaded).
+## 4) Global init (not stage-specific)
+`func_801F71D0_5B30E0` appears global/init:
+- touches globals
+- calls `osViSetSpecialFeatures`
+So it’s likely not the right target for stage-specific behaviors.

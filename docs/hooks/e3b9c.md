@@ -34,3 +34,7 @@ This matches your observation perfectly:
 “recoil becomes nonzero after fire.=1 then counts down when E3B9C gets called”
 
 That’s literally how the code is written: recoil only decrements inside E3B9C return hook when it successfully writes.
+
+---
+
+See also: [Master summarized](../master_summarized.md)
