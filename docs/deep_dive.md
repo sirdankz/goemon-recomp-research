@@ -44,6 +44,32 @@ Your observed fields mapped to this code (1:1)
 
 ## Discoveries / connections from your notes
 
+## Updated facts & cross-links (additive)
+
+This page is a **deep dive into the recoil/overlay mod path**. For the complete, always-updated research pages (tables + gotchas + all confirmed mappings), jump here:
+
+- **Master summarized:** [master_summarized.md](master_summarized.md)
+- **Addresses:** [addresses.md](addresses.md)  |  **Globals:** [globals.md](globals.md)
+- **$a1 action codes:** [reference/action_codes.md](reference/action_codes.md)
+- **ctx + 0x4C map + gotchas:** [reference/ctx_4c_map.md](reference/ctx_4c_map.md)
+- **Stage plumbing / pointer tables:** [reference/stage_plumbing.md](reference/stage_plumbing.md)
+
+### Quick address table (confirmed)
+
+| Item | Address | Type | Notes |
+|---|---:|---|---|
+| Buttons held bitfield | `0x800C7D3A` | u16 | Bits: A=`0x8000`, B=`0x4000`, L=`0x0020` |
+| Weapon slot (wpn.) | `0x8015C604` | u32 | Observed values `1/2/3` (includes camera/flute slot ordering) |
+| HP (half-hearts) | `0x8015C5E7` | u8 | Matches your GameShark note for “infinite health” behavior |
+| Required ctx pointer (current gate) | `0x8016A090` | ptr | Used only if you enable the strict ctx gate |
+| Required ctx+0x4C (current gate) | `0x14` | u8 | Default smoke-spawn state; see full map below |
+
+### Gotchas (why detection randomly “dies”)
+
+- **Debug teleports / boss-return teleports** can change the ctx pointer or the meaning/value of `ctx+0x4C`, so a strict gate (`ctx==0x8016A090 && 4C==0x14`) can fail silently. See: [reference/ctx_4c_map.md](reference/ctx_4c_map.md)
+- **Weapon-1 attacks** can flip `ctx+0x4C` away from `0x14` for some characters (ex: `0x16`, `0x23`, `0x1D`), so the strict gate can exclude the exact windows you care about. See: [reference/ctx_4c_map.md](reference/ctx_4c_map.md)
+
+
 ## Full source code (verbatim)
 
 ### 1) What this file is trying to do
