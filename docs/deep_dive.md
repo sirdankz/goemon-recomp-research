@@ -2,6 +2,9 @@
 
 ## What this file is trying to do (one sentence)
 
+This page explains how the pushbackrecoil/overlay/debugger mod works end-to-end, and links to the “source of truth” reference tables for addresses, $a1 action codes, ctx+0x4C behavior, and stage/data plumbing.
+
+## Key addresses & engine entrypoints
 
 ### Updated facts & cross-links (always current)
 
@@ -23,12 +26,18 @@ Hooks used by this mod:
 - `func_801E3B9C_59FAAC` (ENTRY + RETURN) — ctl discovery + recoil apply at RETURN
 - `func_801D98E0_5957F0` (RETURN) — per-frame overlay + timers
 
-
-## Key addresses & engine entrypoints
-
 ## Global state variables (what each on-screen field really is)
 
+For the full overlay-field mapping, see:
+- [Reference → Globals](../reference/globals/)
+- [Reference → Master summarized](../reference/master_summarized/)
+
+
 ## Helper utilities
+
+Helper functions are documented on:
+- [Reference → Helpers](../reference/helpers/)
+
 
 ### 4.1 rd8/rd16/rd32
 
