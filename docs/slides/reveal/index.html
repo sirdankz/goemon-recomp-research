@@ -1,41 +1,36 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>MNSG Recomp Research — Slides</title>
-
-    <!-- Reveal.js (CDN) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css">
-
-    <style>
-      .reveal { font-size: 28px; }
-    </style>
-  </head>
-
-  <body>
-    <div class="reveal">
-      <div class="slides">
-        <!-- We load slides from slides.md in this same folder -->
-        <section data-markdown="slides.md"
-                 data-separator="^\n---\n$"
-                 data-separator-vertical="^\n--\n$"
-                 data-separator-notes="^Note:">
-        </section>
-      </div>
+<head>
+  <meta charset="utf-8" />
+  <title>Goemon Recomp Research Slides</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Reveal.js from CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@5/dist/theme/black.css">
+  <style>
+    .reveal { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+    .reveal code { font-size: 0.9em; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section data-markdown="slides.md"
+               data-separator="^\n---\n$"
+               data-separator-vertical="^\n--\n$"
+               data-separator-notes="^Note:">
+      </section>
     </div>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/markdown/markdown.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
-
-    <script>
-      Reveal.initialize({
-        hash: true,
-        plugins: [ RevealMarkdown, RevealNotes, RevealHighlight ],
-      });
-    </script>
-  </body>
+  <script src="https://unpkg.com/reveal.js@5/dist/reveal.js"></script>
+  <script src="https://unpkg.com/reveal.js@5/plugin/markdown/markdown.js"></script>
+  <script src="https://unpkg.com/reveal.js@5/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      plugins: [ RevealMarkdown, RevealNotes ],
+    });
+  </script>
+</body>
 </html>
