@@ -1,0 +1,50 @@
+### 5) Hook #1: func_801DD830_599740 (ENTRY) — “DD830”
+## Caller / Callee
+
+Caller (engine): the game calls func_801DD830_599740(...)
+
+Callee (your mod): hook_801DD830_entry() runs at function entry via RECOMP_HOOK
+
+## What it captures
+
+On every DD830 entry, it reads:
+
+$a0 → treated as ctx pointer (g_last_ctx_ptr)
+
+$a1 → your “action/state discriminator” (g_last_a1, g_prev_a1)
+
+weapon slot → rd32(0x8015C604) (g_last_weapon_slot)
+
+buttons held → rd16(0x800C7D3A) (g_last_buttons)
+
+ctx+0x4C → g_last_ctx_4c (only if a0 looks valid)
+
+## The “airborne fire coin throw” trigger
+
+This hook sets fire and arms recoil_ticks ONLY when ALL are true:
+
+weapon_slot == 3
+
+transition gate: g_prev_a1 == 1 AND a1 == 6
+(your note: jumping = 1, wpn3 atk = 6)
+
+g_charge_ready == 1 (B was held long enough)
+
+ctx_gate_ok(a0, ctx+0x4C) (your stable signature)
+
+(g_pending != 0) OR (B still held)
+
+If it triggers:
+
+g_fire = 1
+
+g_recoil_ticks = 12
+
+clears g_charge_ready and g_pending
+
+Otherwise:
+
+g_fire = 0
+
+Connection to your notes:
+This is exactly your pipeline: BHold → ready → fire → recoil window.
