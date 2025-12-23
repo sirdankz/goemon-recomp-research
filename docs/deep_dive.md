@@ -9,7 +9,7 @@ This page explains how the pushbackrecoil/overlay/debugger mod works end-to-end,
 ### Updated facts & cross-links (always current)
 
 If you only read one page: **Reference → Master summarized**  
-- [Master summarized](../reference/master_summarized/)
+- [Master summarized](../master_summarized/)
 
 Quick links to the tables that change most often:
 - [$a1 action codes (character/action mapping)](../reference/action_codes/)
@@ -29,14 +29,14 @@ Hooks used by this mod:
 ## Global state variables (what each on-screen field really is)
 
 For the full overlay-field mapping, see:
-- [Reference → Globals](../reference/globals/)
-- [Reference → Master summarized](../reference/master_summarized/)
+- [Reference → Globals](../globals/)
+- [Reference → Master summarized](../master_summarized/)
 
 
 ## Helper utilities
 
 Helper functions are documented on:
-- [Reference → Helpers](../reference/helpers/)
+- [Reference → Helpers](../helpers/)
 
 
 ### 4.1 rd8/rd16/rd32
