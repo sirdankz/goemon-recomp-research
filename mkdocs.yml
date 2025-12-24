@@ -28,3 +28,5 @@ nav:
       - DD830: hooks/dd830.md
       - E3B9C: hooks/e3b9c.md
       - D98E0: hooks/d98e0.md
+  - Func:
+      - Functions Index: func/index.md
