@@ -17,7 +17,7 @@ nav:
   - Home: index.md
   - Deep dive: deep_dive.md
 
-  - Reference:
+  - Reference OLD:
       - Master summarized: master_summarized.md
       - Addresses: addresses.md
       - Globals: globals.md
@@ -27,6 +27,15 @@ nav:
       - Helpers: helpers.md
       - Call graph: call_graph.md
       - Discoveries: discoveries.md
+
+
+  - Hooks:
+      - DD830: hooks/dd830.md
+      - E3B9C: hooks/e3b9c.md
+      - D98E0: hooks/d98e0.md
+
+  - Func OLD:
+      - Functions Index: func/index.md
 
   - Reference Full UPDATED (Auto):
       - Overview: reference/index.md
@@ -38,14 +47,6 @@ nav:
       - Function xrefs: reference/xrefs.md
       - Writes/reads index: reference/writes_reads.md
       - Export format / dumps: reference/export_format.md
-
-  - Hooks:
-      - DD830: hooks/dd830.md
-      - E3B9C: hooks/e3b9c.md
-      - D98E0: hooks/d98e0.md
-
-  - Func:
-      - Functions Index: func/index.md
 
   - UPDATED:
       - UPDATED Home: UPDATED/index.md
