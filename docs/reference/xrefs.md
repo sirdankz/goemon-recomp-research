@@ -1,0 +1,89 @@
+# Function Xrefs (refs-to-entry)
+
+Generated from `2025-12-29` evidence pack.
+
+| Function entry | Refs-to count | Name (if known) |
+| --- | --- | --- |
+| `0x80013AC4` | 376 | `HUB_fanin_376__80013AC4` |
+| `0x8003521C` | 310 | `sched_setter_8003521C` |
+| `0x801DACDC` | 247 | `HUB_fanin_242__801DACDC` |
+| `0x8021664C` | 103 | `FUN_8021664c` |
+| `0x8001B5AC` | 98 | `action6_dispatch_wrapper_8001B5AC` |
+| `0x80038BC8` | 89 | `HUB_fanin_88__80038BC8` |
+| `0x80003E10` | 78 | `HUB_fanin_72__80003E10` |
+| `0x80003EA0` | 78 | `FUN_80003ea0` |
+| `0x800141C4` | 64 | `FUN_800141c4` |
+| `0x802192B4` | 61 | `FUN_802192b4` |
+| `0x80038B98` | 58 | `FUN_80038b98` |
+| `0x80033898` | 56 | `FUN_80033898` |
+| `0x80035EEC` | 55 | `FUN_80035eec` |
+| `0x800240DC` | 52 | `FUN_800240dc` |
+| `0x802171A8` | 52 | `FUN_802171a8` |
+| `0x80003F30` | 51 | `FUN_80003f30` |
+| `0x80034ED4` | 51 | `FUN_80034ed4` |
+| `0x80034E08` | 50 | `FUN_80034e08` |
+| `0x80000000` | 49 | `TLB_REFILL` |
+| `0x800040A8` | 48 | `FUN_800040a8` |
+| `0x80030688` | 48 | `FUN_80030688` |
+| `0x80014CC4` | 45 | `FUN_80014cc4` |
+| `0x800417E0` | 45 | `_nsqrtf` |
+| `0x801DC554` | 44 | `FUN_801dc554` |
+| `0x8001D394` | 43 | `FUN_8001d394` |
+| `0x80040110` | 41 | `osRecvMesg` |
+| `0x80003728` | 39 | `FUN_80003728` |
+| `0x8021A26C` | 38 | `FUN_8021a26c` |
+| `0x80040620` | 34 | `osWritebackDCache` |
+| `0x801E7DE8` | 33 | `FUN_801e7de8` |
+| `0x80047710` | 32 | `osVirtualToPhysical` |
+| `0x801E8C44` | 32 | `FUN_801e8c44` |
+| `0x8000F420` | 31 | `FUN_8000f420` |
+| `0x80219E08` | 31 | `FUN_80219e08` |
+| `0x801E8964` | 30 | `FUN_801e8964` |
+| `0x80003A94` | 29 | `FUN_80003a94` |
+| `0x8003CF24` | 29 | `FUN_8003cf24` |
+| `0x80049540` | 29 | `__osRestoreInt` |
+| `0x801DD720` | 27 | `FUN_801dd720` |
+| `0x80216DF8` | 27 | `FUN_80216df8` |
+| `0x8001DB04` | 26 | `FUN_8001db04` |
+| `0x80049520` | 26 | `__osDisableInt` |
+| `0x8004CF80` | 26 | `__osContRamRead` |
+| `0x801EE4AC` | 26 | `FUN_801ee4ac` |
+| `0x80014B74` | 25 | `FUN_80014b74` |
+| `0x8002AA00` | 25 | `FUN_8002aa00` |
+| `0x800148F0` | 24 | `FUN_800148f0` |
+| `0x80029E08` | 24 | `FUN_80029e08` |
+| `0x800322A8` | 24 | `FUN_800322a8` |
+| `0x801DAC7C` | 24 | `FUN_801dac7c` |
+| `0x801E3324` | 24 | `FUN_801e3324` |
+| `0x8021ADD0` | 24 | `FUN_8021add0` |
+| `0x80013B14` | 23 | `FUN_80013b14` |
+| `0x8003F1D8` | 23 | `FUN_8003f1d8` |
+| `0x800476B0` | 23 | `alHeapDBAlloc` |
+| `0x8004CF0C` | 23 | `__osPfsSelectBank` |
+| `0x801FB240` | 23 | `FUN_801fb240` |
+| `0x8000383C` | 22 | `FUN_8000383c` |
+| `0x8001D898` | 22 | `FUN_8001d898` |
+| `0x80224D50` | 22 | `FUN_80224d50` |
+| `0x80001C00` | 21 | `FUN_80001c00` |
+| `0x800042AC` | 21 | `FUN_800042ac` |
+| `0x80034EF8` | 21 | `FUN_80034ef8` |
+| `0x80014218` | 20 | `FUN_80014218` |
+| `0x80034680` | 20 | `FUN_80034680` |
+| `0x801EE330` | 20 | `FUN_801ee330` |
+| `0x80216E1C` | 20 | `FUN_80216e1c` |
+| `0x802268A8` | 20 | `HUB_fanout_85__802268A8` |
+| `0x80005900` | 19 | `FUN_80005900` |
+| `0x8004DD40` | 19 | `__osContRamWrite` |
+| `0x801DD6E0` | 19 | `FUN_801dd6e0` |
+| `0x8021DDE8` | 19 | `FUN_8021dde8` |
+| `0x8001B2C8` | 18 | `FUN_8001b2c8` |
+| `0x8003D310` | 18 | `FUN_8003d310` |
+| `0x8003FEC0` | 18 | `osCreateMesgQueue` |
+| `0x80040250` | 18 | `osSendMesg` |
+| `0x80041EE0` | 18 | `osGetTime` |
+| `0x8004A220` | 18 | `__osSiRawStartDma` |
+| `0x801E3AC0` | 18 | `FUN_801e3ac0` |
+| `0x80221B48` | 18 | `FUN_80221b48` |
+
+!!! note
+    This is “how many code references point to the function entry”, as exported. It does **not** include data-driven dispatch paths (jr/jalr tables).
