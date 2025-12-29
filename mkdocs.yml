@@ -1,4 +1,5 @@
 site_name: Goemon Recomp Research
+
 theme:
   name: material
   features:
@@ -8,24 +9,27 @@ theme:
     - toc.integrate
     - search.suggest
     - search.highlight
+
 plugins:
   - search
+
 nav:
   - Home: index.md
   - Deep dive: deep_dive.md
+
   - Reference:
       - Master summarized: master_summarized.md
       - Addresses: addresses.md
       - Globals: globals.md
-      - Reference index: reference/index.md
       - $a1 action codes: reference/action_codes.md
       - ctx+0x4C map: reference/ctx_4c_map.md
       - Stage plumbing: reference/stage_plumbing.md
       - Helpers: helpers.md
       - Call graph: call_graph.md
       - Discoveries: discoveries.md
-  - Reference (Dumps):
-      - Reference Home: reference/index.md
+
+  - Reference Full (Auto):
+      - Overview: reference/index.md
       - jr-dispatch tables: reference/jr_dispatch_tables.md
       - Function catalog: reference/functions_index.md
       - Symbols: reference/symbols.md
@@ -33,14 +37,16 @@ nav:
       - Callgraph hubs: reference/callgraph.md
       - Function xrefs: reference/xrefs.md
       - Writes/reads index: reference/writes_reads.md
-      - Export format: reference/export_format.md
+      - Export format / dumps: reference/export_format.md
 
   - Hooks:
       - DD830: hooks/dd830.md
       - E3B9C: hooks/e3b9c.md
       - D98E0: hooks/d98e0.md
+
   - Func:
       - Functions Index: func/index.md
+
   - UPDATED:
       - UPDATED Home: UPDATED/index.md
       - Systems Overview: UPDATED/systems_overview.md
