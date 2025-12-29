@@ -2,8 +2,6 @@
 
 This section is a curated snapshot of what we’ve **verified** so far while reverse‑engineering **Mystical Ninja Starring Goemon (MNSG)** in a Ghidra‑first workflow for Goemon Recomp / N64 modding.
 
-!!! tip "How to use"
-    Use the left nav to jump to systems. Pages are written as **facts + addresses + how to exploit it for automation**.
 
 ## Quick links
 - [Systems Overview](systems_overview.md)
