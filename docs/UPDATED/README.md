@@ -12,7 +12,7 @@ nav:
       - Door / Transition: UPDATED/door_transition_system.md
       - Action6: UPDATED/action6_system.md
       - Memory Addresses Inputs: UPDATED/memory_addresses_inputs.md
-      - Effects Engine:UPDATED/ effect_engine.md
+      - Effects Engine:UPDATED/ UPDATED/effect_engine.md
       - Scheduler & Coroutines: UPDATED/scheduler_coroutines.md
       - Workflows & Rules: UPDATED/workflows_rules.md
       - Tooling Gotchas: UPDATED/tooling_gotchas.md
