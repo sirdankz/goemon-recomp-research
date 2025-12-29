@@ -156,3 +156,65 @@ This is where `obj+0xDA` is consumed/cleared and follow-up ticks are scheduled.
 !!! note "Why this matters"
     This is a clean “system boundary” where mods can hook a single point (consumer, gate, state writer)
     and reliably affect transitions without chasing dozens of stage-specific call sites.
+
+---
+
+## Tiny door debug checklist
+
+Use this when your door mod “does nothing” or triggers at the wrong time. The goal is to confirm the signal path:
+
+`obj+0xDA → FUN_803BC020 → g_system.field77|=0x80 → FUN_801F7B0C → FUN_801F7C14... → FUN_801F7F78(state=4)`
+
+### 1) Sanity: are we seeing the trigger?
+- Watch **`obj+0xDA`**:
+  - Should be **non-zero briefly** when a door trigger fires.
+- Watch **`FUN_803BC020`**:
+  - Confirm it runs near the trigger.
+  - Confirm it **clears `obj+0xDA` back to 0**.
+  - Confirm it sets **`obj+0xEC |= 4`**.
+
+If `obj+0xDA` never changes → you’re not hitting a door trigger volume/object (or wrong object instance).
+
+### 2) Did the trigger become a global transition request?
+- Watch **`g_system.field77` @ `+0x3AE29`**
+  - Confirm bit **`0x80`** flips on.
+- Put a log hook on any writer:
+  - `FUN_80006140`, `FUN_800061B0`, `FUN_80037284`
+
+If `obj+0xDA` fires but `field77&0x80` never sets → you’re stuck between overlay trigger and system request.
+
+### 3) Did the gate accept it?
+- Watch **`FUN_801F7B0C`**
+  - Confirm it runs after `field77&0x80` becomes true.
+  - Confirm it branches into door-enter (to `FUN_801F7C14`).
+
+If `field77&0x80` is set but gate doesn’t branch → there’s likely another condition (lockout/state/timer) preventing door enter.
+
+### 4) Did the door-enter chain advance state?
+- Watch **`g_system.field444` @ `+0x3B01D`**
+  - Confirm `FUN_801F7F78` sets state to **`4`**.
+
+If the chain starts but `field444` never reaches 4 → you’re entering the chain but failing an internal step.
+
+### 5) Scheduler/coroutine “are we getting ticks?”
+- Watch scheduler calls:
+  - `FUN_8003521C` should schedule:
+    - `0x80001240` (twice)
+    - `0x80001020` (once)
+- Confirm `FUN_8003524C` is running and executing scheduled targets.
+
+If `FUN_803BC020` runs but follow-up never happens → scheduler isn’t advancing or your hook broke execution timing.
+
+### 6) Minimal per-frame HUD print (what to display)
+Print these each frame (or only when they change):
+- `field77` (and `field77 & 0x80`)
+- `field444` (state byte)
+- last-hit marker for:
+  - producer (which of: `801FB1C0 / 8021D724 / 802239B0`)
+  - consumer (`803BC020`)
+  - gate (`801F7B0C`)
+  - state writer (`801F7F78`)
+- optional: current scheduled target address (what `FUN_8003521C` most recently queued)
+
+That’s enough to tell exactly where the pipeline is breaking.
+
