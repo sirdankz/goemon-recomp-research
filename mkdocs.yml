@@ -24,6 +24,17 @@ nav:
       - Helpers: helpers.md
       - Call graph: call_graph.md
       - Discoveries: discoveries.md
+  - Reference (Dumps):
+      - Reference Home: reference/index.md
+      - jr-dispatch tables: reference/jr_dispatch_tables.md
+      - Function catalog: reference/functions_index.md
+      - Symbols: reference/symbols.md
+      - Memory blocks: reference/memory_blocks.md
+      - Callgraph hubs: reference/callgraph.md
+      - Function xrefs: reference/xrefs.md
+      - Writes/reads index: reference/writes_reads.md
+      - Export format: reference/export_format.md
+
   - Hooks:
       - DD830: hooks/dd830.md
       - E3B9C: hooks/e3b9c.md
