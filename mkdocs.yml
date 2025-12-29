@@ -28,7 +28,7 @@ nav:
       - Call graph: call_graph.md
       - Discoveries: discoveries.md
 
-  - Reference Full (Auto):
+  - Reference Full UPDATED (Auto):
       - Overview: reference/index.md
       - jr-dispatch tables: reference/jr_dispatch_tables.md
       - Function catalog: reference/functions_index.md
