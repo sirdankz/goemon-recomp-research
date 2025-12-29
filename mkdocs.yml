@@ -15,7 +15,7 @@ plugins:
 
 nav:
   - Home: index.md
-  - Deep dive: deep_dive.md
+
 
   - Reference OLD:
       - Master summarized: master_summarized.md
@@ -29,7 +29,7 @@ nav:
       - Discoveries: discoveries.md
 
 
-  - Hooks:
+  - Hooks OLD:
       - DD830: hooks/dd830.md
       - E3B9C: hooks/e3b9c.md
       - D98E0: hooks/d98e0.md
